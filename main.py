@@ -6,21 +6,27 @@ app = Flask('app')
 def hello_world():
     print(request.headers)
     return render_template(
-        'index.html',
-        user_id=request.headers['X-Replit-User-Id'],
-        user_name=request.headers['X-Replit-User-Name'],
-        user_roles=request.headers['X-Replit-User-Roles'],
-      user_bio=request.headers['X-Replit-User-Bio'],
-      user_profile_image=request.headers['X-Replit-User-Profile-Image'],
-      user_teams=request.headers['X-Replit-User-Teams'],
-      user_url=request.headers['X-Replit-User-Url']
+        'welcome.html'
     )
 
 
-@app.route('/welcomePage')
-def test():
+
+@app.route('/signup')
+def signup():
   return render_template(
-    'welcomePage.html'
+    'signup.html'
+  )
+
+@app.route('/login')
+def login():
+  return render_template(
+    'login.html'
+  )
+
+@app.route('/menu')
+def menu():
+  return render_template(
+    'menu.html'
   )
 
 

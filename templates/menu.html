@@ -1,39 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Python Flask ReplAuth</title>
-<script src="https://replit.com/public/js/repl-auth-v2.js"></script>
+<title>Page Title</title>
 </head>
 <body>
-	{% if user_id %}
-	<center>
-  <div class="box">
-    <center>
-    <div class="box-text-auth">
-      <p>
-    Hello, {{ user_name }}! ({{ user_id }})
-      </p>
-    </div>
-  <img src="{{ user_profile_image }}" width="200">
-    <center>
-  </center>
-  </div>
-	{% else %}
-  <center>
+
+
     <center>
       <div class="box">
         <div class="box-text">
-            <h1>Hello!</h1>
+            <h2>Welcome to the Menu!</h2>
         </div>
-        <div class="box-button">
-          <button onclick="LoginWithReplit()"> Login w/ replit</button>
+        <br>
+        <br>
+        <div class="signup-box-button">
+          <a href = "https://example102.mehmetbisen.repl.co/signup">
+          <button onclick="QB()"> Click to Create an Account</button>
+        </div>
+        <br>
+        <div class="login-box-button">
+          <a href = "https://example102.mehmetbisen.repl.co/login">
+          <button onclick="QB()"> Click to Login</button>
+        </div>
+        <br>
+        <br>
+        <div class="home-page">
+          <a href = "https://example102.mehmetbisen.repl.co">
+          <button onclick="QB()"> Click to Go to The Home Page</button>
         </div>
     </center>
       </div>
   </center>
 
-	{% endif %}
-</body>
+
+
+
+
+
+  
 <style>
   html, body {
   height: 100%;
@@ -46,9 +50,9 @@
   src: url("https://css.replit.cool/Chess/src/fonts/Poppins-Bold[1].ttf");
 }
 
-h1{
+h2{
   font-family:"Font";
-  font-size:75px;
+  font-size:60px;
   color:#00bbf9;
 }
 
@@ -94,7 +98,7 @@ details{
 
 button{
   width:200px;
-  height:55px;
+  height:70px;
   font-family:"Trebuchet MS";
   font-size:25px;
   box-shadow:4px 4px white;
@@ -131,8 +135,8 @@ button:disabled{
 }
   
 .box{
-  width:300px;
-  height:300px;
+  width:500px;
+  height:650px;
   background-color:#495057;
   border-radius:5px;
   border-color:white;
@@ -145,7 +149,7 @@ button:disabled{
   top:60px;
 }
 
-.box-button{
+.login-box-button{
   position:relative;
   top:20px;
 }
@@ -155,4 +159,7 @@ button:disabled{
   top:10px;
 }
 </style>
+
+  
+</body>
 </html>

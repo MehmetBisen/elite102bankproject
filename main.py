@@ -9,7 +9,11 @@ def hello_world():
         'welcome.html'
     )
 
-
+@app.route('/form')
+def form():
+   return render_template(
+      'form.html'
+   )
 
 @app.route('/signup')
 def signup():

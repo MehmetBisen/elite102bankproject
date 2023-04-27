@@ -6,40 +6,140 @@
     </head>
     <body>
       <h1>Here you can modify your account...</h1>
-      <form id = "modify_account">
+      <form id = "modify_account" action="/account">
             <div>
               <label for="username">Username of the account you would like to modify: </label>
               <input type="text" id="username" name="username" required>
             </div>
+            <br>
+            <h3>Fill out the bottom with the information you would like to change in your account...</h3>
             <div>
-              <label for="first-name">First Name:</label>
+              <label for="first-name">First Name: </label>
               <input type="text" id="firstName" name="firstName" required>
             </div>
             <div>
-              <label for="last-name">Last Name:</label>
+              <label for="last-name">Last Name: </label>
               <input type="text" id="lastName" name="lastName" required>
             </div>
             <div>
-              <label for="email">Email:</label>
+              <label for="email">Email: </label>
               <input type="email" id="email" name="email" required>
             </div>
             <div>
-              <label for="password">Password:</label>
+              <label for="password">Password: </label>
               <input type="text" id="password" name="password" required>
             </div>
           <button type="submit">Submit</button>
       </form>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h1>
+        Here you can deposit into your account...
+      </h1>
 
 
+
+      <form id="deposit" action="/account">
+          <div>
+            <label for="userName">Username of the account you would like to deposit into: </label>
+            <input type="text" id="userName" name="userName" required>
+          </div>
+          <br>
+          <div>
+            <label for="newB">How much would you like to withdraw from your account?: </label>
+            <input type="number" id="newB" name="newB" required>
+          </div>
+        <button type="submit">Submit</button>
+      </form>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h1>
+        Here you can withdraw from your account...
+      </h1>
+
+
+
+      <form id="withdraw" action="/account">
+          <div>
+            <label for="userName">Username of the account you would like to withdraw from: </label>
+            <input type="text" id="userName" name="userName" required>
+          </div>
+          <br>
+          <div>
+            <label for="removedB">How much would you like to deposit into your account?: </label>
+            <input type="number" id="removedB" name="removedB" required>
+          </div>
+        <button type="submit">Submit</button>
+      </form>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h1>
+        Here you can delete your account...
+      </h1>
+
+
+      <form id="delete_account" action="/account">
+          <div>
+            <label for="userName">Username of the account you would like to delete: </label>
+            <input type="text" id="userName" name="userName" required>
+          </div>
+          <br>
+          <div>
+            <label for="password">Password of the account you would like to delete: </label>
+            <input type="text" id="password" name="password" required>
+          </div>
+        <button type="submit">Submit</button>
+      </form>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h1>
+        Here you can check your balance...
+      </h1>
+
+      <form id="check_balance" action="/account">
+          <div>
+            <label for="check_userName">Username of the account you would like to check the balance of: </label>
+            <input type="text" id="check_userName" name="check_userName" required>
+          </div>
+          <br>
+        <button type="submit">Submit</button>
+      </form>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
 
 
 
 
     </body>
-
-
-
 
   </center>
 </html>

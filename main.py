@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import mysql.connector
+from flask import send_file
 #from forms import SignUpForm
 
 app = Flask('app')
@@ -10,11 +11,6 @@ def welcome():
         'welcome.html'
     )
 
-@app.route('/form')
-def form():
-  return render_template(
-    'form.html'
-  )
 
 @app.route('/signup', methods = ['GET', 'POST'])
 def signup():
@@ -52,34 +48,108 @@ def menu():
 
 @app.route('/account', methods = ['GET', 'POST'])
 def account():
-  print(request.args, "firstName" in request.args)
+  print(request.args, "firstName" in request.args, "newB" in request.args, "removedB" in request.args, "password" in request.args, "check_userName" in request.args)
+  if "newB" in request.args:
+    deposit(request.args.get("userName"), request.args.get("newB"))
   if "firstName" in request.args:
     modify_account(request.args.get("username"), request.args.get("firstName"), request.args.get("lastName"), request.args.get("email"), request.args.get("password"))
+  if "removedB" in request.args:
+    withdraw(request.args.get("userName"), request.args.get("removedB"))
+  if "password" in request.args:
+    delete_account(request.args.get("userName"), request.args.get("password"))
+  if "check_userName" in request.args:
+    check_balance(request.args.get("check_userName"))
+  
+
 
   return render_template(
     'account.html'
    )
 
-    
 
+
+
+
+
+def check_balance(check_userName):
+  connection = mysql.connector.connect(user="root", database="quickbanking", password="Hikmet1q.")
+  connection.autocommit = True
+  cursor = connection.cursor()
+
+  check_bal = f"""SELECT balance FROM account WHERE userName = '{check_userName}';"""
+
+  cursor.execute(check_bal)
+
+  bal = cursor.fetchone()
+
+
+  connection.commit()
+  cursor.close()
+  connection.close()
+
+  
+  
+
+
+
+
+def delete_account(userName, password):
+  connection = mysql.connector.connect(user="root", database="quickbanking", password="Hikmet1q.")
+  connection.autocommit = True
+  cursor = connection.cursor()
+
+  delete = f"""DELETE FROM account WHERE userName = '{userName}' and password = '{password}';"""
+
+  cursor.execute(delete)
+
+  connection.commit()
+  cursor.close()
+  connection.close()
+
+
+
+def withdraw(userName, removedB):
+  connection = mysql.connector.connect(user="root", database="quickbanking", password="Hikmet1q.")
+  connection.autocommit = True
+  cursor = connection.cursor()
+
+  withdraw = f"""UPDATE account SET balance = balance - {removedB} WHERE userName = '{userName}';"""
+
+  cursor.execute(withdraw)
+
+  connection.commit()
+  cursor.close()
+  connection.close()
+
+
+
+def deposit(userName, newB):
+  connection = mysql.connector.connect(user="root", database="quickbanking", password="Hikmet1q.")
+  connection.autocommit = True
+  cursor = connection.cursor()
+
+  deposit = f"""UPDATE account SET balance = balance + {newB} WHERE userName = '{userName}';"""
+
+  cursor.execute(deposit)
+
+  connection.commit()
+  cursor.close()
+  connection.close()
 
 
 
 def modify_account(username, firstName, lastName, email, password):
-    if firstName and lastName and email and password: # check if all values are not empty or None
-        connection = mysql.connector.connect(user="root", database="quickbanking", password="Hikmet1q.")
-        connection.autocommit = True
-        cursor = connection.cursor()
+  connection = mysql.connector.connect(user="root", database="quickbanking", password="Hikmet1q.")
+  connection.autocommit = True
+  cursor = connection.cursor()
 
-        modify = (f"""UPDATE account SET firstName = '{firstName}', lastName = '{lastName}', email = '{email}', password = '{password}' WHERE username = '{username}'""")
+  modify = (f"""UPDATE account SET firstName = '{firstName}', lastName = '{lastName}', email = '{email}', password = '{password}' WHERE username = '{username}'""")
 
-        cursor.execute(modify)
+  cursor.execute(modify)
 
-        connection.commit()
-        cursor.close()
-        connection.close()
-    else:
-        print("Error: One or more values are empty or None.")
+  connection.commit()
+  cursor.close()
+  connection.close()
 
 
 
@@ -112,6 +182,17 @@ def sign_up(firstName, lastName, username, email, password,  balance):
 
   cursor.close()
   connection.close()
+
+
+
+
+
+
+
+
+
+
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080)
